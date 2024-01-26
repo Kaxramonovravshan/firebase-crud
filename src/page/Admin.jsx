@@ -77,6 +77,14 @@ const Admin = (props) => {
         />
         <button className="btn btn-dark">save Product</button>
       </form>
+
+      <table className="table table-hover">
+        <thead>
+          <tr>
+            <th>name</th>
+          </tr>
+        </thead>
+      </table>
     </>
   );
 };
