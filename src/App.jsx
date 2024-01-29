@@ -45,6 +45,7 @@ const App = () => {
   function save() {
     setLoading(true);
     const userCollection = collection(firestore, "users");
+
     if (currentUser === "") {
       addDoc(userCollection, userObj).then((res) => {
         getUsers();
@@ -69,22 +70,35 @@ const App = () => {
   return (
     <>
       {loading ? (
-        <h3>Loading...</h3>
+        <div className="">
+          <button
+            className="btn btn-primary mx-auto d-block mt-3 w-50"
+            type="button"
+            disabled
+          >
+            <span
+              className="spinner-grow spinner-grow-sm"
+              aria-hidden="true"
+            ></span>
+            <span role="status">Loading...</span>
+          </button>
+        </div>
       ) : (
-        <div>
-          <h1>App</h1>
-          <div className="p-3 card w-25">
+        <div className="p-2">
+          <div className="p-3 card w-25 mb-4 _box">
             <input
               value={userObj.name}
               onChange={(e) => setUserObj({ ...userObj, name: e.target.value })}
               className="form-control mb-2"
               type="text"
+              placeholder="name..."
             />
             <input
               value={userObj.age}
               onChange={(e) => setUserObj({ ...userObj, age: e.target.value })}
               className="form-control mb-2"
               type="number"
+              placeholder="age..."
             />
             <button onClick={save} className="btn btn-dark">
               save
